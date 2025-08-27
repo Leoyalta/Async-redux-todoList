@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { selectIsLoading, selectError } from "./redux/tasksSlice.js";
 import { fetchTasks } from "./redux/operations";
 import { Layout } from "./Components/Layout/Layout.jsx";
 import { AppBar } from "./Components/AppBar/AppBar.jsx";
@@ -9,8 +10,8 @@ import css from "./App.module.css";
 
 function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.tasks.isLoading);
-  const error = useSelector((state) => state.tasks.error);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchTasks());
